@@ -13,4 +13,14 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <dimen name="height95">95dp</dimen>
+    <dimen name="height110">110dp</dimen>
+    <dimen name="width100">100dp</dimen>
+    <dimen name="height500">500dp</dimen>
+    <dimen name="height35">35dp</dimen>
+    <dimen name="height25">25dp</dimen>
+    <dimen name="height200">200dp</dimen>
+    <dimen name="pad20">20dp</dimen>
+    <dimen name="pad10">10dp</dimen>
+    <dimen name="pad5">5dp</dimen>
 </resources>
