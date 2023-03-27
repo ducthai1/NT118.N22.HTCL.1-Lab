@@ -36,19 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
                 switch ( position ) {
                     case  0:
-                        view.setBackgroundColor(getResources().getColor(
-                                android.R.color.holo_red_light
-                        ));
+                        view.setBackgroundColor(0xFFFE5252);
                         break;
                     case  1:
-                        view.setBackgroundColor(getResources().getColor(
-                                android.R.color.holo_orange_light
-                        ));
+                        view.setBackgroundColor(0xFFFEFE00);
                         break;
                     case  2:
-                        view.setBackgroundColor(getResources().getColor(
-                                android.R.color.holo_green_light
-                        ));
+                        view.setBackgroundColor(0xFF68EFAD);
                         break;
                     case  3:
                         view.setBackgroundColor(getResources().getColor(
@@ -82,6 +76,17 @@ public class MainActivity extends AppCompatActivity {
         };
 
         listView.setAdapter(arrayAdapter);
+
+//        int totalHeight = 0;
+//        for (int i = 0; i < arrayAdapter.getCount(); i++) {
+//            View listItem = arrayAdapter.getView(i, null, listView);
+//            listItem.measure(0, 0);
+//            totalHeight += listItem.getMeasuredHeight();
+//        }
+//
+//        ViewGroup.LayoutParams params = listView.getLayoutParams();
+//        params.height = totalHeight + (listView.getDividerHeight() * (arrayAdapter.getCount() - 1));
+//        listView.setLayoutParams(params);
     }
 
 }
