@@ -14,7 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/height25"
             android:text="@string/view1"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
