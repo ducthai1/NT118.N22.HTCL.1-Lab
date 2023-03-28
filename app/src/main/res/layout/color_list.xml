@@ -4,15 +4,15 @@
     android:layout_height="match_parent" >
 
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:textColor="@color/black"/>
-    <ImageView
-        android:id="@+id/viewimg"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:layout_toRightOf="@+id/text"/>
+<!--    <TextView-->
+<!--        android:id="@+id/text"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:textColor="@color/black"/>-->
+<!--    <ImageView-->
+<!--        android:id="@+id/viewimg"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_toRightOf="@+id/text"/>-->
 
 </RelativeLayout>
