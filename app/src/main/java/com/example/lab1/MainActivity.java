@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     ListView listView;
     @Override
@@ -76,6 +78,22 @@ public class MainActivity extends AppCompatActivity {
         };
 
         listView.setAdapter(arrayAdapter);
+
+//        ArrayList<ModelColor> arrayList = new ArrayList<>();
+//        AdapterColor adapterModelColor;
+//
+//        listView = findViewById(R.id.listcolor);
+//
+//        arrayList.add(new ModelColor("afdajfnafnj", R.color.yellow));
+//        arrayList.add(new ModelColor("afdajfssdnafnj",R.color.yellow));
+//        arrayList.add(new ModelColor("afdajfn123456afnj",R.color.yellow));
+//        arrayList.add(new ModelColor("afdaj578fnafnj",R.color.yellow));
+//
+//
+//
+//
+//        adapterModelColor = new AdapterColor(MainActivity.this, R.layout.color_list, arrayList);
+//        listView.setAdapter(adapterModelColor);
 
 //        int totalHeight = 0;
 //        for (int i = 0; i < arrayAdapter.getCount(); i++) {
