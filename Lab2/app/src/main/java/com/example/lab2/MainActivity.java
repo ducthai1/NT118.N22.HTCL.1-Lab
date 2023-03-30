@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
                     mEmployeeList.add(employee);
                     mEmployeeListAdapter.notifyDataSetChanged();
 
-                    mNameEditText.setText("");
-                    mSalaryEditText.setText("");
+                    etName.setText("");
+                    etSalary.setText("");
                 } else {
                     Toast.makeText(MainActivity.this, "Hãy nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
