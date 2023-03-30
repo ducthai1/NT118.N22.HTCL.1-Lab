@@ -11,12 +11,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private EditText etName, etSalary;
     private Button btnCalculate;
     private ListView lvResult;
-    private ArrayList<Employee> employees;
+    private EmployeeListAdapter employees;
+
+    private List<Employee> EmployeeList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,19 +30,36 @@ public class MainActivity extends AppCompatActivity {
         etSalary = findViewById(R.id.etSalary);
         btnCalculate = findViewById(R.id.btnCalculate);
         lvResult = findViewById(R.id.lvResult);
+        employees = new EmployeeListAdapter(this, R.layout, employees);
+        lvResult.setAdapter(employees);
+
 
         btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = etName.getText().toString();
-//                double salary = Double.parseDouble(etSalary.getText().toString());
                 int salary = Integer.parseInt(etSalary.getText().toString());
 
-                Employee employee = new Employee(name, salary);
-                employees.add(employee);
+//                Employee employee = new Employee(name, salary);
+//                employees.add(employee);
+//
+//                ArrayAdapter<Employee> adapter = new ArrayAdapter<Employee>(MainActivity.this, android.R.layout.simple_list_item_1, employees);
+//
+//                lvResult.setAdapter(adapter);
+//                lvResult.deferNotifyDataSetChanged();
 
-                ArrayAdapter<Employee> adapter = new ArrayAdapter<Employee>(MainActivity.this, android.R.layout.simple_list_item_1, employees);
-                lvResult.setAdapter(adapter);
+                if (!name.isEmpty() && !salary.isEmpty()) {
+                    double salary = Double.parseDouble(salaryString);
+                    Employee employee = new Employee(name, salary);
+                    mEmployeeList.add(employee);
+                    mEmployeeListAdapter.notifyDataSetChanged();
+
+                    mNameEditText.setText("");
+                    mSalaryEditText.setText("");
+                } else {
+                    Toast.makeText(MainActivity.this, "Hãy nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                }
+//                double salary = Double.parseDouble(etSalary.getText().toString());
 //                double totalSalary = salary * 2; // Tính lương = lương cơ bản * 2
 //                String result = name + ": " + totalSalary; // Chuỗi kết quả
 
