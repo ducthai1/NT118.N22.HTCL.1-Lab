@@ -6,9 +6,10 @@ public class Employee {
 
     private double totalSalary;
 
-    public Employee(String name, double salary) {
+    public Employee(String name, double salary, double totalSalary) {
         this.name = name;
         this.salary = salary;
+        this.totalSalary = totalSalary;
     }
 
     public String getName() {
@@ -27,11 +28,13 @@ public class Employee {
         this.totalSalary = totalSalary;
     }
 
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+
     public double getTotalSalary() {
         return totalSalary;
     }
 
-    public double calculateSalary() {
-        return salary * 2;
-    }
 }

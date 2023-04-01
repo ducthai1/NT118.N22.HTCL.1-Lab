@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         etSalary = findViewById(R.id.etSalary);
         btnCalculate = findViewById(R.id.btnCalculate);
         lvResult = findViewById(R.id.lvResult);
-        employees = new EmployeeListAdapter(this, R.layout, employees);
+//        employees = new EmployeeListAdapter(this, R.layout, employees);
         lvResult.setAdapter(employees);
 
 
