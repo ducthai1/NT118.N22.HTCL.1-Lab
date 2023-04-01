@@ -25,20 +25,20 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Employee employee = getItem(position);
-
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_employee, parent, false);
-        }
-
-        TextView textViewName = convertView.findViewById(R.id.etName);
-        TextView textViewSalary = convertView.findViewById(R.id.etSalary);
-        TextView textViewTotalSalary = convertView.findViewById(R.id.lvResult);
-
-        textViewName.setText(employee.getName());
-        textViewSalary.setText(String.format(Locale.getDefault(), "%.2f", employee.getSalary()));
-        textViewTotalSalary.setText(String.format(Locale.getDefault(), "%.2f", employee.getTotalSalary()));
-
-        return convertView;
+//        Employee employee = getItem(position);
+//
+//        if (convertView == null) {
+//            convertView = LayoutInflater.from(context).inflate(R.layout.item_employee, parent, false);
+//        }
+//
+//        TextView textViewName = convertView.findViewById(R.id.etName);
+//        TextView textViewSalary = convertView.findViewById(R.id.etSalary);
+//        TextView textViewTotalSalary = convertView.findViewById(R.id.lvResult);
+//
+//        textViewName.setText(employee.getName());
+//        textViewSalary.setText(String.format(Locale.getDefault(), "%.2f", employee.getSalary()));
+//        textViewTotalSalary.setText(String.format(Locale.getDefault(), "%.2f", employee.getTotalSalary()));
+//
+//        return convertView;
     }
 }

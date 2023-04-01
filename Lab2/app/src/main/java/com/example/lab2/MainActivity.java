@@ -47,18 +47,18 @@ public class MainActivity extends AppCompatActivity {
 //
 //                lvResult.setAdapter(adapter);
 //                lvResult.deferNotifyDataSetChanged();
-
-                if (!name.isEmpty() && !salary.isEmpty()) {
-                    double salary = Double.parseDouble(salaryString);
-                    Employee employee = new Employee(name, salary);
-                    mEmployeeList.add(employee);
-                    mEmployeeListAdapter.notifyDataSetChanged();
-
-                    etName.setText("");
-                    etSalary.setText("");
-                } else {
-                    Toast.makeText(MainActivity.this, "Hãy nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                }
+//
+//                if (!name.isEmpty() && !salary.isEmpty()) {
+//                    double salary = Double.parseDouble(salaryString);
+//                    Employee employee = new Employee(name, salary);
+//                    mEmployeeList.add(employee);
+//                    mEmployeeListAdapter.notifyDataSetChanged();
+//
+//                    etName.setText("");
+//                    etSalary.setText("");
+//                } else {
+//                    Toast.makeText(MainActivity.this, "Hãy nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+//                }
 //                double salary = Double.parseDouble(etSalary.getText().toString());
 //                double totalSalary = salary * 2; // Tính lương = lương cơ bản * 2
 //                String result = name + ": " + totalSalary; // Chuỗi kết quả
