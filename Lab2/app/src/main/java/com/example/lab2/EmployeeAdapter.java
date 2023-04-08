@@ -51,7 +51,7 @@ public class EmployeeAdapter extends BaseAdapter {
         Employee employee = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_employee, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.etSalary, parent, false);
         }
 
         TextView textViewName = convertView.findViewById(R.id.etName);
