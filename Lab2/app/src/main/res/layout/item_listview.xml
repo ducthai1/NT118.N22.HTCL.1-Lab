@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="100dp"
+    android:gravity="center_horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/l_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_10"
+        android:textColor="@color/black"
+        android:text="@string/txt_name"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size"/>
+
+    <TextView
+        android:id="@+id/l_salary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_10"
+        android:textColor="@color/black"
+        android:layout_below="@+id/l_name"
+        android:text="@string/txt_sal_net"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size"/>
+
+    <TextView
+        android:id="@+id/result_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_10"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/l_name"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/distance_40"
+        android:textSize="@dimen/text_size"/>
+
+    <TextView
+        android:id="@+id/result_salary"
+        android:layout_width="@dimen/distance_200"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_10"
+        android:textColor="@color/black"
+        android:layout_below="@+id/l_name"
+        android:layout_toRightOf="@+id/l_salary"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/distance_30"
+        android:textSize="@dimen/text_size"/>
+
+
+</RelativeLayout>

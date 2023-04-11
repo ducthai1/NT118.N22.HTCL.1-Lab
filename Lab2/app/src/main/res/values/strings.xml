@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Lab2</string>
+    <string name="txt_name">Họ và tên:</string>
+    <string name="txt_salary">Lương Gross</string>
+    <string name="txt_sal_net">Lương Net:</string>
+    <string name="btn_calc">Tính lương</string>
 </resources>
