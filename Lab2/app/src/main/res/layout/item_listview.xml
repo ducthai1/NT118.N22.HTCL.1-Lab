@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/l_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="Họ và tên:"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/l_salary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/l_name"
+        android:text="Lương Net:"
+        android:textStyle="bold"
+
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/result_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/l_name"
+        android:text="aaaaaa"
+        android:textStyle="bold"
+        android:layout_marginLeft="40dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/result_slary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/l_name"
+        android:layout_toRightOf="@+id/l_salary"
+        android:text="100000"
+        android:textStyle="bold"
+        android:layout_marginLeft="30dp"
+        android:textSize="20dp"/>
+
+
+</RelativeLayout>
