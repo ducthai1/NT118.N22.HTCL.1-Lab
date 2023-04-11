@@ -1,4 +1,4 @@
 package com.example.lab2;
 
-public class Adapter {
+public class Employee {
 }
