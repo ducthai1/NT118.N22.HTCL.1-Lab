@@ -5,6 +5,7 @@
 + Listview layout
 + Gridview layout
 <br>
+### NT118.N22.HTCL.1-Lab2
 <b>Lab2 Request</b>
 + Result display: Name Employee and Salary
 + a = gross - gross*10,5
