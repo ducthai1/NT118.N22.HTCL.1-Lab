@@ -4,6 +4,7 @@
 + Column layout
 + Listview layout
 + Gridview layout
+<br>
 <b>Lab2 Request</b>
 + Result display: Name Employee and Salary
 + a = gross - gross*10,5
