@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="full_name">Full name</string>
+    <string name="phone">Phone</string>
+    <string name="add_local">Add Local</string>
+    <string name="add_firestore">Add Fire Store</string>
+    <string name="query_local">Query Local</string>
+    <string name="query_firestore">Query Fire Store</string>
+    <string name="result_firebase">Result FireBase</string>
+</resources>
