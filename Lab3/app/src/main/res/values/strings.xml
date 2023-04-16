@@ -6,5 +6,5 @@
     <string name="add_firestore">Add Fire Store</string>
     <string name="query_local">Query Local</string>
     <string name="query_firestore">Query Fire Store</string>
-    <string name="result_firebase">Result FireBase</string>
+    <string name="result_firebase">Result Firebase</string>
 </resources>
