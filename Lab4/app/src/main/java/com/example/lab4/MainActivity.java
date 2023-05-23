@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,35 +52,56 @@ public class MainActivity extends AppCompatActivity {
                 String FullName = fullname.getText().toString();
                 String Phone = phone.getText().toString();
                 String User = user.getText().toString();
-//                String Password = pass.getText().toString();
+                String Password = pass.getText().toString();
                 String emPass = result.getText().toString();
 
-                Map<String,Object> user = new HashMap<>();
-                user.put("Full Name", FullName);
-                user.put("Phone", Phone);
-                user.put("User", User);
+                if (TextUtils.isEmpty(FullName))
+                {
+                    Toast.makeText(MainActivity.this, "Please enter your full name", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(Phone))
+                {
+                    Toast.makeText(MainActivity.this, "Please enter your phone number", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(User))
+                {
+                    Toast.makeText(MainActivity.this, "Please enter your user name", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(Password))
+                {
+                    Toast.makeText(MainActivity.this, "Please enter your password", Toast.LENGTH_SHORT).show();
+                } else if (User.length()<6) {
+                    Toast.makeText(MainActivity.this, "User name phai dai hon 6 ky tu", Toast.LENGTH_SHORT).show();
+                } else if (User.matches(".*\\d.*"))
+                {
+                    Toast.makeText(MainActivity.this, "User name khong chua ki tu so", Toast.LENGTH_SHORT).show();
+                } else if (Password.length()<6)
+                {
+                    Toast.makeText(MainActivity.this, "Mat khau phai dai hon 6 ky tu", Toast.LENGTH_SHORT).show();
+                } else   {
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("Full Name", FullName);
+                    user.put("Phone", Phone);
+                    user.put("User", User);
 //                user.put("Password", Password);
-                user.put("Password", emPass);
+                    user.put("Password", emPass);
 
 
-                db.collection("user")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(MainActivity.this, "Thanh cong", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                                finishAffinity();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(MainActivity.this, "That bai", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    db.collection("user")
+                            .add(user)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Toast.makeText(MainActivity.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                    finishAffinity();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(MainActivity.this, "That bai", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
-
+                }
             }
         });
         btnBacktologin.setOnClickListener(new View.OnClickListener() {
