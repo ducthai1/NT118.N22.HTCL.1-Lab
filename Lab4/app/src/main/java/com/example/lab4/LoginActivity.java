@@ -1,8 +1,12 @@
 package com.example.lab4;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,8 +30,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
-    private Button btnBacktoSignup;
-    private TextView result;
+    private TextView result, btnBacktoSignup;
     private EditText etUsername, etPassword;
 
     private FirebaseFirestore db;
@@ -40,7 +43,9 @@ public class LoginActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         btnLogin = findViewById(R.id.buttonLogin);
         btnBacktoSignup = findViewById(R.id.backtosignup);
-
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = getLayoutInflater().inflate(R.layout.custom_toast, null);
+        TextView text = (TextView) layout.findViewById(R.id.custom_toast_text);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
 //                HashPass(etPassword.getText().toString());
                 String username = etUsername.getText().toString();
 //                String HashPassLogin = result.getText().toString();
+
+
                 try {
                     db.collection("user")
                             .whereEqualTo("User", username)
@@ -60,7 +67,15 @@ public class LoginActivity extends AppCompatActivity {
                                         QuerySnapshot snapshot= task.getResult();
                                         if (snapshot.isEmpty()) {
                                             // Tài khoản không tồn tại hoặc mật khẩu không chính xác
-                                            Toast.makeText(LoginActivity.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
+                                            LayoutInflater inflater = getLayoutInflater();
+                                            View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_layout));
+                                            TextView text = (TextView) layout.findViewById(R.id.custom_toast_text);
+                                            text.setText("Username or Password is incorrect.");
+                                            Toast toast = new Toast(getApplicationContext());
+                                            toast.setDuration(Toast.LENGTH_SHORT);
+                                            toast.setView(layout);
+                                            toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 40);
+                                            toast.show();
                                         } else {
                                             // Tài khoản tồn tại và mật khẩu chính xác, chuyển sang màn hình chính
                                             Intent intent = new Intent(LoginActivity.this, HomePage.class);

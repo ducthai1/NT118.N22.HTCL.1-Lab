@@ -10,7 +10,10 @@ import java.security.NoSuchAlgorithmException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,8 +32,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnRegister, btnBacktologin;
-    TextView result;
+    Button btnRegister;
+    TextView result, btnBacktologin;
 
     EditText fullname, phone, user, pass;
     FirebaseFirestore db;
@@ -102,7 +105,15 @@ public class MainActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(MainActivity.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
+                                    LayoutInflater inflater = getLayoutInflater();
+                                    View layout = inflater.inflate(R.layout.custom_toast_success, (ViewGroup) findViewById(R.id.custom_toast_layout));
+                                    TextView text = (TextView) layout.findViewById(R.id.custom_toast_text);
+                                    text.setText("Register Successfully");
+                                    Toast toast = new Toast(getApplicationContext());
+                                    toast.setDuration(Toast.LENGTH_SHORT);
+                                    toast.setView(layout);
+                                    toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 40);
+                                    toast.show();
                                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                                     startActivity(intent);
                                     finishAffinity();
