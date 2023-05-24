@@ -18,7 +18,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
+import com.scottyab.aescrypt.AESCrypt;
 
+import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -43,33 +45,37 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String password = etPassword.getText().toString();
-                HashPass(etPassword.getText().toString());
+//                HashPass(etPassword.getText().toString());
                 String username = etUsername.getText().toString();
-                String HashPassLogin = result.getText().toString();
-                db.collection("user")
-                        .whereEqualTo("username", username)
-                        .whereEqualTo("password", HashPassLogin)
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    QuerySnapshot snapshot= task.getResult();
-                                    if (snapshot.isEmpty()) {
-                                        // Tài khoản không tồn tại hoặc mật khẩu không chính xác
-                                        Toast.makeText(LoginActivity.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
+//                String HashPassLogin = result.getText().toString();
+                try {
+                    db.collection("user")
+                            .whereEqualTo("User", username)
+                            .whereEqualTo("Password", AESCrypt.encrypt("myKey", password))
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        QuerySnapshot snapshot= task.getResult();
+                                        if (snapshot.isEmpty()) {
+                                            // Tài khoản không tồn tại hoặc mật khẩu không chính xác
+                                            Toast.makeText(LoginActivity.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            // Tài khoản tồn tại và mật khẩu chính xác, chuyển sang màn hình chính
+                                            Intent intent = new Intent(LoginActivity.this, HomePage.class);
+                                            startActivity(intent);
+                                            finishAffinity();
+                                        }
                                     } else {
-                                        // Tài khoản tồn tại và mật khẩu chính xác, chuyển sang màn hình chính
-                                        Intent intent = new Intent(LoginActivity.this, HomePage.class);
-                                        startActivity(intent);
-                                        finishAffinity();
+                                        // Lỗi xảy ra khi truy vấn Firestore
+                                        Toast.makeText(LoginActivity.this, "Error querying database.", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    // Lỗi xảy ra khi truy vấn Firestore
-                                    Toast.makeText(LoginActivity.this, "Error querying database.", Toast.LENGTH_SHORT).show();
                                 }
-                            }
-                        });
+                            });
+                } catch (GeneralSecurityException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -85,28 +91,28 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void HashPass(String password)
-    {
-        try {
-            MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-
-            md.update(password.getBytes());
-            byte[] messageDigest = md.digest();
-
-            StringBuffer MD5Hash = new StringBuffer();
-            for (int i = 0; i < messageDigest.length; i++)
-            {
-                String h = Integer.toHexString(0xFF & messageDigest[i]);
-                while (h.length() < 2)
-                    h = "0" + h;
-                MD5Hash.append(h);
-            }
-            result.setText( MD5Hash);
-        }
-        catch (NoSuchAlgorithmException e)
-        {
-            e.printStackTrace();
-        }
-    }
+//    public void HashPass(String password)
+//    {
+//        try {
+//            MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+//
+//            md.update(password.getBytes());
+//            byte[] messageDigest = md.digest();
+//
+//            StringBuffer MD5Hash = new StringBuffer();
+//            for (int i = 0; i < messageDigest.length; i++)
+//            {
+//                String h = Integer.toHexString(0xFF & messageDigest[i]);
+//                while (h.length() < 2)
+//                    h = "0" + h;
+//                MD5Hash.append(h);
+//            }
+//            result.setText( MD5Hash);
+//        }
+//        catch (NoSuchAlgorithmException e)
+//        {
+//            e.printStackTrace();
+//        }
+//    }
 
 }
