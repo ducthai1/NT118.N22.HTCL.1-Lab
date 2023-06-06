@@ -23,3 +23,11 @@
 + Check user and password</br>
 + Show message "Username or Password is incorrect"</br>
 
+<h2>NT118.N22.HTCL.1-Lab5</h2></br>
+<b>Lab5 Request</b></br>
+- 1.	Bài tập 1: Sử dụng Animation từ file XML!
++ Sinh viên chỉnh sửa, bổ sung code để các animation hoạt động khi user nhấn vào các button (btnSomethingXml) tương ứng.!
+- 2.	Bài tập 2: Sử dụng Animation từ code!
++ Yêu cầu: sinh viên tự xây dựng các hàm khởi tạo Fade Out, Blink và gắn sự kiện click cho các button btnFadeOutCode, btnBlinkCode.!
+- 3.	Bài tập 3: Tạo animation khi start Activity mới!
++ Yêu cầu: sinh viên đổi animation chuyển giữa 2 activity thành dạng new activity đẩy MainActivity từ phải qua trái!
