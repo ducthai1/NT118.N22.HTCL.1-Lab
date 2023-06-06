@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -90,6 +91,32 @@ public class FadeIn extends AppCompatActivity {
 
     }
 
+    private Animation initFadeInAnimation(){
+        AlphaAnimation animation = new AlphaAnimation(0f, 1f);
+        animation.setDuration(3000);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+    private Animation initFadeOutAnimation(){
+        AlphaAnimation animation = new AlphaAnimation(1f, 0f);
+        animation.setDuration(1500);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+    private Animation initBlinkAnimation() {
+        AlphaAnimation animation = new AlphaAnimation(1f, 0f);
+        animation.setDuration(300);
+        animation.setRepeatMode(Animation.REVERSE);
+        animation.setRepeatCount(Animation.INFINITE);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+
 
 
     @Override
@@ -111,5 +138,8 @@ public class FadeIn extends AppCompatActivity {
         handleClickAnimationXml(btnZoomInXml, R.anim.anim_zoom_in);
         handleClickAnimationXml(btnZoomOutXml, R.anim.anim_zoom_out);
 
+        handleClickAnimationCode(btnFadeInCode,initFadeInAnimation());
+        handleClickAnimationCode(btnBlinkCode,initBlinkAnimation());
+        handleClickAnimationCode(btnFadeOutCode,initFadeOutAnimation());
     }
 }
