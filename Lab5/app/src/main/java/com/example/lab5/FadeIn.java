@@ -2,6 +2,7 @@ package com.example.lab5;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -141,5 +142,16 @@ public class FadeIn extends AppCompatActivity {
         handleClickAnimationCode(btnFadeInCode,initFadeInAnimation());
         handleClickAnimationCode(btnBlinkCode,initBlinkAnimation());
         handleClickAnimationCode(btnFadeOutCode,initFadeOutAnimation());
+
+        ivUitLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FadeIn.this, StartActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_fade_in,R.anim.anim_fade_out);
+//                finishActivity(1);
+
+            }
+        });
     }
 }
